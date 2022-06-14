@@ -1,12 +1,12 @@
 # Endpoints to be checked
 
-| Endpoint      | Description |
-| ------------- |------------ |         
-| localhost:2222/coupons/{couponId} | Get One coupon |  
-| localhost:2222/coupons | Get all coupons   |
-| localhost:2222/coupon | Insert a coupon  |
-| localhost:2222/coupon/{couponId} | Update a coupon |  
-| localhost:2222/coupon/{couponId} | Delete a coupon  |
+|Method| Endpoint      | Description |
+|------| ------------- |------------ |         
+|**GET**| localhost:2222/coupons/{couponId} | Get One coupon |  
+|**GET**| localhost:2222/coupons | Get all coupons   |
+|**POST**| localhost:2222/coupon | Insert a coupon  |
+|**PUT**| localhost:2222/coupon/{couponId} | Update a coupon |  
+|**DELETE**| localhost:2222/coupon/{couponId} | Delete a coupon  |
 
 > server.port = 2222 (can be changed)
 
