@@ -2,7 +2,7 @@
 
 |Method| Endpoint      | Description |
 |------| ------------- |------------ |         
-|**GET**| localhost:2222/coupons/{couponId} | Get One coupon |  
+|**GET**| localhost:2222/coupon/{couponId} | Get One coupon |  
 |**GET**| localhost:2222/coupons | Get all coupons   |
 |**POST**| localhost:2222/coupon | Insert a coupon  |
 |**PUT**| localhost:2222/coupon/{couponId} | Update a coupon |  
