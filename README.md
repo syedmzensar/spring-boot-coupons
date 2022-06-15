@@ -10,7 +10,7 @@
 
 > server.port = 2222 (can be changed)
 
-<h2><i>Update Version 1 : 15-06-2022</i></h2>
+<h2><i>Update : 15-06-2022</i></h2>
 <br>
 
 **Added Data transfer objects class to the files
