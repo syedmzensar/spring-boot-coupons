@@ -59,6 +59,4 @@ public class Coupon {
 		return "Coupon [couponId=" + couponId + ", couponCode=" + couponCode + ", couponExpiry=" + couponExpiry + "]";
 	}
 
-	
-
 }
