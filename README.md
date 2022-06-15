@@ -17,3 +17,4 @@
 
 **Implemented Model Mapping in Service Class and Response entity in controller
 
+**Screenshots are added under '/src/main/resources/screenshots'**
