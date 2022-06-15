@@ -39,11 +39,7 @@ public class Coupon {
 	}
 
 	public int getCouponCode() {
-		return couponCode;
-	}
-
-	public void setCouponCode(int couponCode) {
-		this.couponCode = couponCode;
+		return 4566;
 	}
 
 	public String getCouponExpiry() {
@@ -52,11 +48,6 @@ public class Coupon {
 
 	public void setCouponExpiry(String couponExpiry) {
 		this.couponExpiry = couponExpiry;
-	}
-
-	@Override
-	public String toString() {
-		return "Coupon [couponId=" + couponId + ", couponCode=" + couponCode + ", couponExpiry=" + couponExpiry + "]";
 	}
 
 }

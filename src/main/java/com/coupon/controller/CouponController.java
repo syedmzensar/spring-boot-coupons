@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.coupon.dto.CouponDto;
 import com.coupon.entity.Coupon;
 import com.coupon.service.CouponService;
 
@@ -26,9 +27,9 @@ public class CouponController {
 	@Autowired
 	private CouponService couponService;
 
-	@GetMapping("/coupon/{couponId}")
-	public Coupon getCoupon(@PathVariable("couponId") int couponId) {
-		return couponService.getCoupon(couponId);
+	@GetMapping("/coupon/{couponIdDto}")
+	public Coupon getCoupon(@PathVariable("couponIdDto") int couponIdDto) {
+		return couponService.getCoupon(couponIdDto);
 	}
 
 	@GetMapping("/coupons")
@@ -37,19 +38,20 @@ public class CouponController {
 	}
 
 	@PostMapping("/coupon")
-	public void insertCoupon(@RequestBody Coupon coupon) {
+	public void insertCoupon(@RequestBody CouponDto couponDto) {
 
-		couponService.insertCoupon(coupon);
+		couponService.insertCoupon(couponDto);
 	}
 
 	@PutMapping("/coupon/{couponId}")
-	public void updateCoupon(@PathVariable("couponId") int couponId, @RequestBody Coupon coupon) {
-		couponService.updateCoupon(couponId, coupon);
+	public void updateCoupon(@PathVariable("couponIdDto") int couponIdDto, 
+			@RequestBody CouponDto couponDto) {
+		couponService.updateCoupon(couponIdDto, couponDto);
 	}
 
 	@DeleteMapping("/coupon/{couponId}")
-	public void deleteCoupon(@PathVariable("couponId") int couponId) {
-		couponService.deleteCoupon(couponId);
+	public void deleteCoupon(@PathVariable("couponIdDto") int couponIdDto) {
+		couponService.deleteCoupon(couponIdDto);
 	}
 
 }

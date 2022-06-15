@@ -10,19 +10,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.coupon.dto.CouponDto;
 import com.coupon.entity.Coupon;
 
 public interface CouponService {
 	
-	public Coupon getCoupon(int couponId);
+	public Coupon getCoupon(int couponIdDto);
 	
 	public ArrayList<Coupon> getAllCoupons();
 
-	public void insertCoupon(Coupon coupon);
+	public void insertCoupon(CouponDto couponDto);
 
-	public void updateCoupon(int couponId, Coupon coupon); 
+	public void updateCoupon(int couponIdDto, CouponDto couponDto); 
 	
 
-	public void deleteCoupon(int couponId);
+	public void deleteCoupon(int couponIdDto);
 
 }
