@@ -16,18 +16,18 @@ public class Coupon {
 	@Column(name = "code")
 	private int couponCode;
 
-	@Column(name = "type")
-	private String couponType;
+	@Column(name = "expiry_date")
+	private String couponExpiry;
 
 	public Coupon() {
 		super();
 	}
 
-	public Coupon(int couponId, int couponCode, String couponType) {
+	public Coupon(int couponId, int couponCode, String couponExpiry) {
 		super();
 		this.couponId = couponId;
 		this.couponCode = couponCode;
-		this.couponType = couponType;
+		this.couponExpiry = couponExpiry;
 	}
 
 	public int getCouponId() {
@@ -46,17 +46,19 @@ public class Coupon {
 		this.couponCode = couponCode;
 	}
 
-	public String getCouponType() {
-		return couponType;
+	public String getCouponExpiry() {
+		return couponExpiry;
 	}
 
-	public void setCouponType(String couponType) {
-		this.couponType = couponType;
+	public void setCouponExpiry(String couponExpiry) {
+		this.couponExpiry = couponExpiry;
 	}
 
 	@Override
 	public String toString() {
-		return "Coupon [couponId=" + couponId + ", couponCode=" + couponCode + ", couponType=" + couponType + "]";
+		return "Coupon [couponId=" + couponId + ", couponCode=" + couponCode + ", couponExpiry=" + couponExpiry + "]";
 	}
+
+	
 
 }
