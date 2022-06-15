@@ -2,6 +2,7 @@ package com.coupon.service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,15 +16,15 @@ import com.coupon.entity.Coupon;
 
 public interface CouponService {
 	
-	public Coupon getCoupon(int couponIdDto);
+	public CouponDto getCoupon(int couponId);
 	
-	public ArrayList<Coupon> getAllCoupons();
+	public List<CouponDto> getAllCoupons();
 
-	public void insertCoupon(CouponDto couponDto);
+	public CouponDto insertCoupon(CouponDto couponDto);
 
-	public void updateCoupon(int couponIdDto, CouponDto couponDto); 
+	public void updateCoupon(int couponId, CouponDto couponDto); 
 	
 
-	public void deleteCoupon(int couponIdDto);
+	public void deleteCoupon(int couponId);
 
 }

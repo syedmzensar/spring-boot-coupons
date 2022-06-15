@@ -3,8 +3,10 @@ package com.coupon.service;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,33 +20,45 @@ public class CouponServiceImpl implements CouponService {
 	@Autowired
 	private CouponRepository couponRepository;
 
-	public Coupon getCoupon(int couponIdDto) {
-		return couponRepository.findById(couponIdDto).get();
-	}
+	@Autowired
+	private ModelMapper modelMapper;
 
-	public ArrayList<Coupon> getAllCoupons() {
-		return (ArrayList<Coupon>) couponRepository.findAll();
+	public CouponDto getCoupon(int couponId) {
+		Coupon coupon = couponRepository.findById(couponId).get();
 
-	}
-
-	public void insertCoupon(CouponDto couponDto) {
-		Coupon coupon = new Coupon();
-		coupon.setCouponId(couponDto.getCouponIdDto());
-		coupon.setCouponExpiry(couponDto.getCouponExpiryDto());
-		couponRepository.save(coupon);
+		return modelMapper.map(coupon, CouponDto.class);
 
 	}
 
-	public void updateCoupon(int couponIdDto, CouponDto couponDto) {
-		Coupon coupon = new Coupon();
-		coupon.setCouponId(couponDto.getCouponIdDto());
-		coupon.getCouponCode();
-		coupon.setCouponExpiry(couponDto.getCouponExpiryDto());
-		couponRepository.save(coupon);
+	public List<CouponDto> getAllCoupons() {
+		List<Coupon> coupon = couponRepository.findAll();
+
+		List<CouponDto> listOfCouponDto = new ArrayList<CouponDto>();
+
+		for (Coupon c : coupon) {
+			listOfCouponDto.add(modelMapper.map(c, CouponDto.class));
+		}
+
+		return listOfCouponDto;
+
 	}
 
-	public void deleteCoupon(int couponIdDto) {
-		couponRepository.deleteById(couponIdDto);
+	public CouponDto insertCoupon(CouponDto couponDto) {
+
+		Coupon coupon = modelMapper.map(couponDto, Coupon.class);
+		Coupon insertedCoupon = couponRepository.save(coupon);
+
+		return modelMapper.map(insertedCoupon, CouponDto.class);
+
+	}
+
+	public void updateCoupon(int couponId, CouponDto couponDto) {
+
+		couponRepository.save(modelMapper.map(couponDto, Coupon.class));
+	}
+
+	public void deleteCoupon(int couponId) {
+		couponRepository.deleteById(couponId);
 	}
 
 }

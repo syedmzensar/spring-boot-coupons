@@ -3,42 +3,54 @@ package com.coupon.dto;
 import javax.persistence.Column;
 import javax.persistence.Id;
 
+import com.coupon.entity.Coupon;
+
 public class CouponDto {
 
-	private int couponIdDto;
+	private int couponId;
 
-	private String couponExpiryDto;
+	private int couponCode;
+
+	private String couponExpiry;
 
 	public CouponDto() {
 		super();
 	}
 
-	public CouponDto(int couponIdDto, String couponExpiryDto) {
+	public CouponDto(int couponId, int couponCode, String couponExpiry) {
 		super();
-		this.couponIdDto = couponIdDto;
-		this.couponExpiryDto = couponExpiryDto;
+		this.couponId = couponId;
+		this.couponCode = couponCode;
+		this.couponExpiry = couponExpiry;
 	}
 
-	public int getCouponIdDto() {
-		return couponIdDto;
+	public int getCouponId() {
+		return couponId;
 	}
 
-	public void setCouponIdDto(int couponIdDto) {
-		this.couponIdDto = couponIdDto;
+	public void setCouponId(int couponId) {
+		this.couponId = couponId;
 	}
 
-	public String getCouponExpiryDto() {
-		return couponExpiryDto;
+	public int getCouponCode() {
+		return couponCode;
 	}
 
-	public void setCouponExpiryDto(String couponExpiryDto) {
-		this.couponExpiryDto = couponExpiryDto;
+	public void setCouponCode(int couponCode) {
+		this.couponCode = couponCode;
+	}
+
+	public String getCouponExpiry() {
+		return couponExpiry;
+	}
+
+	public void setCouponExpiry(String couponExpiry) {
+		this.couponExpiry = couponExpiry;
 	}
 
 	@Override
 	public String toString() {
-		return "CouponDto [couponIdDto=" + couponIdDto + ", couponExpiryDto=" + couponExpiryDto + "]";
+		return "Coupon [couponId=" + couponId + ", couponCode=" + couponCode + ", couponExpiry=" + couponExpiry + "]";
 	}
-	
-	
+
 }
