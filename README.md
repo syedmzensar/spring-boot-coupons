@@ -1,4 +1,4 @@
-# Endpoints to be checked
+# Endpoints
 
 |Method| Endpoint      | Description |
 |------| ------------- |------------ |         
@@ -14,3 +14,7 @@
   * Duplicate Id check
    * Count of all coupons
    * List of names of coupons for verification
+
+<h2><i>Update Version 1</i></h2>
+
+Added Data transfer objects class to the files
