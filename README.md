@@ -7,6 +7,7 @@
 |**POST**| localhost:2222/coupons | Insert a coupon  |
 |**PUT**| localhost:2222/coupons/{couponId} | Update a coupon |  
 |**DELETE**| localhost:2222/coupons/{couponId} | Delete a coupon  |
+|**GET**| localhost:2222/coupons/date/{couponExpiry} | Get coupon for that date   |
 
 > server.port = 2222 (can be changed)
 
