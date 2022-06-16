@@ -1,10 +1,5 @@
 package com.coupon.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
-import com.coupon.entity.Coupon;
-
 public class CouponDto {
 
 	private int couponId;

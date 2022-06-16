@@ -1,13 +1,12 @@
 package com.coupon.service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.coupon.dto.CouponDto;
@@ -30,12 +29,14 @@ public class CouponServiceImpl implements CouponService {
 
 	}
 
-	public List<CouponDto> getAllCoupons() {
-		List<Coupon> coupon = couponRepository.findAll();
+	public List<CouponDto> getAllCoupons(int pageNumber, int pageSize) {
+		Page<Coupon> findAllCoupons = couponRepository.findAll(PageRequest.of(pageNumber, pageSize));
 
+		List<Coupon> coupons = findAllCoupons.getContent();
+		
 		List<CouponDto> listOfCouponDto = new ArrayList<CouponDto>();
 
-		for (Coupon c : coupon) {
+		for (Coupon c : coupons) {
 			listOfCouponDto.add(modelMapper.map(c, CouponDto.class));
 		}
 
@@ -46,9 +47,12 @@ public class CouponServiceImpl implements CouponService {
 	public CouponDto insertCoupon(CouponDto couponDto) {
 
 		Coupon coupon = modelMapper.map(couponDto, Coupon.class);
+//		Coupon coupon = entityToDto(couponDto); 
 		Coupon insertedCoupon = couponRepository.save(coupon);
 
 		return modelMapper.map(insertedCoupon, CouponDto.class);
+
+//		return dtoToEntity(insertedCoupon);
 
 	}
 
@@ -61,4 +65,40 @@ public class CouponServiceImpl implements CouponService {
 		couponRepository.deleteById(couponId);
 	}
 
+	public List<CouponDto> getDates(String couponExpiry) {
+
+		List<Coupon> dates = couponRepository.getDates(couponExpiry);
+
+		List<CouponDto> listOfCouponDto = new ArrayList<CouponDto>();
+
+		for (Coupon c : dates) {
+			listOfCouponDto.add(modelMapper.map(c, CouponDto.class));
+		}
+
+		return listOfCouponDto;
+
+	}
+
+	/*
+	 * public Coupon entityToDto(CouponDto couponDto) {
+	 * 
+	 * Coupon coupon = new Coupon(); coupon.setCouponId(couponDto.getCouponIdDto());
+	 * coupon.setCouponCode(couponDto.getCouponCodeDto());
+	 * coupon.setCouponExpiry(couponDto.getCouponExpiryDto());
+	 * 
+	 * return coupon;
+	 * 
+	 * }
+	 * 
+	 * public CouponDto dtoToEntity(Coupon coupon) {
+	 * 
+	 * CouponDto couponDto = new CouponDto();
+	 * couponDto.setCouponIdDto(coupon.getCouponId());
+	 * couponDto.setCouponCodeDto(coupon.getCouponCode());
+	 * couponDto.setCouponExpiryDto(coupon.getCouponExpiry());
+	 * 
+	 * return couponDto;
+	 * 
+	 * }
+	 */
 }
