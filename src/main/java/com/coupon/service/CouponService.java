@@ -18,4 +18,8 @@ public interface CouponService {
 
 	List<CouponDto> getDates(String couponExpiry);
 
+	List<CouponDto> checkCoupon(int couponCode);
+
+	/* List<Coupon> checkExpiry(int couponId); */
+
 }

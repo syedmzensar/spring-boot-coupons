@@ -2,6 +2,7 @@ package com.coupon.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
@@ -9,6 +10,7 @@ public class Coupon {
 
 	@Id
 	@Column(name = "id")
+	@GeneratedValue
 	private int couponId;
 
 	@Column(name = "code")

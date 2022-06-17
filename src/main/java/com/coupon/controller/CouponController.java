@@ -22,6 +22,7 @@ import com.coupon.service.CouponService;
 @RestController
 @RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = {
 		MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+
 public class CouponController {
 
 	@Autowired
@@ -61,5 +62,21 @@ public class CouponController {
 	public ResponseEntity<List<CouponDto>> getDates(@PathVariable String couponExpiry) {
 		return new ResponseEntity<List<CouponDto>>(couponService.getDates(couponExpiry), HttpStatus.OK);
 	}
+
+	@GetMapping("/coupons/code/{couponCode}")
+	public ResponseEntity<String> checkCoupon(@PathVariable int couponCode) {
+		if (couponCode > 4000 && couponCode < 4500)
+			return new ResponseEntity<String>("You have won 10 % discount on clothing and shopping brands",
+					HttpStatus.OK);
+		return new ResponseEntity<String>("Sorry please Try again!!! Better luck next time", HttpStatus.OK);
+	}
+
+	/*
+	 * @GetMapping("/coupons/codeexpiry/{couponId}") public ResponseEntity<String>
+	 * checkExpiry(@PathVariable("couponId") int couponId) {
+	 * 
+	 * return new ResponseEntity<String>("These are not expired coupons",
+	 * HttpStatus.OK); }
+	 */
 
 }

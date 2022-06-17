@@ -33,7 +33,7 @@ public class CouponServiceImpl implements CouponService {
 		Page<Coupon> findAllCoupons = couponRepository.findAll(PageRequest.of(pageNumber, pageSize));
 
 		List<Coupon> coupons = findAllCoupons.getContent();
-		
+
 		List<CouponDto> listOfCouponDto = new ArrayList<CouponDto>();
 
 		for (Coupon c : coupons) {
@@ -78,6 +78,30 @@ public class CouponServiceImpl implements CouponService {
 		return listOfCouponDto;
 
 	}
+
+	public List<CouponDto> checkCoupon(int couponCode) {
+		List<Coupon> codes = couponRepository.checkCoupon(couponCode);
+
+		List<CouponDto> listOfCouponDto = new ArrayList<CouponDto>();
+
+		for (Coupon c : codes) {
+			listOfCouponDto.add(modelMapper.map(c, CouponDto.class));
+		}
+
+		return listOfCouponDto;
+	}
+
+//	/*public List<Coupon> checkExpiry(int couponId) {
+//
+//		List<Coupon> coupons = couponRepository.findAll();
+//
+//		for (Coupon c : coupons) {
+//			if (c.getCouponExpiry().contains("2021"))
+//				coupons.remove(c);
+//		}
+//		return coupons;*/
+//
+//	}
 
 	/*
 	 * public Coupon entityToDto(CouponDto couponDto) {

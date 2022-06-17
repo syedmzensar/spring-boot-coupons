@@ -1,5 +1,14 @@
 server:
   port: 2222
+  
+management:
+  server:
+   port: 9000
+    
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 spring:
   datasource:
@@ -8,7 +17,7 @@ spring:
     password: Temp1234
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
     properties:
       hibernate:

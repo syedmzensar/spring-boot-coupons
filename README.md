@@ -7,7 +7,7 @@
 |**POST**| localhost:2222/coupons | Insert a coupon  |
 |**PUT**| localhost:2222/coupons/{couponId} | Update a coupon |  
 |**DELETE**| localhost:2222/coupons/{couponId} | Delete a coupon  |
-|**GET**| localhost:2222/coupons/date/{couponExpiry} | Get coupon for that date   |
+|**GET**| localhost:2222/coupons/date/{couponExpiry} | Get coupon for that date   |**GET**| localhost:2222/coupons/code/{couponCode} | Check for coupon offer  |
 
 > server.port = 2222 (can be changed)
 
@@ -24,3 +24,10 @@
 <br>
 
 **Queries and Pagination added
+
+<h2><i>Update : 17-06-2022</i></h2>
+<br>
+
+**Actuators
+**Created a jar and a war file
+**Tested the war file on external tomcat
