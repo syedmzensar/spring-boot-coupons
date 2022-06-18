@@ -71,12 +71,9 @@ public class CouponController {
 		return new ResponseEntity<String>("Sorry please Try again!!! Better luck next time", HttpStatus.OK);
 	}
 
-	/*
-	 * @GetMapping("/coupons/codeexpiry/{couponId}") public ResponseEntity<String>
-	 * checkExpiry(@PathVariable("couponId") int couponId) {
-	 * 
-	 * return new ResponseEntity<String>("These are not expired coupons",
-	 * HttpStatus.OK); }
-	 */
+	@GetMapping("/coupons/expirydate/{couponId}")
+	public ResponseEntity<String> checkExpiry(@PathVariable("couponId") int couponId) {
+		return new ResponseEntity<String>(couponService.checkExpiry(couponId), HttpStatus.OK);
+	}
 
 }

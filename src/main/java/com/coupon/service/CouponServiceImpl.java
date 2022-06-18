@@ -2,6 +2,8 @@ package com.coupon.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,17 +93,21 @@ public class CouponServiceImpl implements CouponService {
 		return listOfCouponDto;
 	}
 
-//	/*public List<Coupon> checkExpiry(int couponId) {
-//
-//		List<Coupon> coupons = couponRepository.findAll();
-//
-//		for (Coupon c : coupons) {
-//			if (c.getCouponExpiry().contains("2021"))
-//				coupons.remove(c);
-//		}
-//		return coupons;*/
-//
-//	}
+	public String checkExpiry(int couponId) {
+		List<Coupon> coupons = couponRepository.findAll();
+		for (Coupon c : coupons) {
+			if (couponId == c.getCouponId()) {
+//				String[] year = c.getCouponExpiry().split("-");
+//				System.out.println(year[0]);
+				if (c.getCouponExpiry().split("-")[0].matches("200[0-9]|201[0-9]|202[01]")) {
+					return "Coupon is expired";
+				}
+			}
+
+		}
+		return "Coupon is valid";
+
+	}
 
 	/*
 	 * public Coupon entityToDto(CouponDto couponDto) {

@@ -14,10 +14,8 @@ public interface CouponRepository extends JpaRepository<Coupon, Integer> {
 
 	@Query(value = "select * from coupon where code>4000 and code<4600", nativeQuery = true)
 	List<Coupon> checkCoupon(int couponCode);
-	
-	/*
-	 * @Query(value = "select * from coupon where CONTAINS ( expiry_date, '%:n') ",
-	 * nativeQuery = true) List<Coupon> checkExpiry(@Param("n") int couponId);
-	 */
+
+	@Query(value = "select * from coupon where id=?1 ", nativeQuery = true)
+	String checkExpiry(int couponId);
 
 }

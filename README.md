@@ -8,6 +8,7 @@
 |**PUT**| localhost:2222/coupons/{couponId} | Update a coupon |  
 |**DELETE**| localhost:2222/coupons/{couponId} | Delete a coupon  |
 |**GET**| localhost:2222/coupons/date/{couponExpiry} | Get coupon for that date   |**GET**| localhost:2222/coupons/code/{couponCode} | Check for coupon offer  |
+|**GET**| localhost:2222/coupons/expirydate/{couponId} | Check for coupon expiry  |
 
 > server.port = 2222 (can be changed)
 
@@ -29,5 +30,7 @@
 <br>
 
 **Actuators
+<br>
 **Created a jar and a war file
+<br>
 **Tested the war file on external tomcat

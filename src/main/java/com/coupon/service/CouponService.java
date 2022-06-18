@@ -20,6 +20,6 @@ public interface CouponService {
 
 	List<CouponDto> checkCoupon(int couponCode);
 
-	/* List<Coupon> checkExpiry(int couponId); */
+	String checkExpiry(int couponId);
 
 }
