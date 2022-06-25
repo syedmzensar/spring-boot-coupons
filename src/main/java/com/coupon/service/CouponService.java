@@ -3,10 +3,11 @@ package com.coupon.service;
 import java.util.List;
 
 import com.coupon.dto.CouponDto;
+import com.coupon.entity.Coupon;
 
 public interface CouponService {
 
-	public CouponDto getCoupon(int couponId);
+	public CouponDto findByCouponCode(String couponCode);
 
 	public List<CouponDto> getAllCoupons(int pageNumber, int pageSize);
 
@@ -15,10 +16,6 @@ public interface CouponService {
 	public void updateCoupon(int couponId, CouponDto couponDto);
 
 	public void deleteCoupon(int couponId);
-
-	List<CouponDto> getDates(String couponExpiry);
-
-	List<CouponDto> checkCoupon(int couponCode);
 
 	String checkExpiry(int couponId);
 

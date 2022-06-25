@@ -9,11 +9,7 @@ import com.coupon.entity.Coupon;
 
 public interface CouponRepository extends JpaRepository<Coupon, Integer> {
 
-	@Query(value = "select * from coupon where expiry_date like %?1 ", nativeQuery = true)
-	List<Coupon> getDates(String couponExpiry);
-
-	@Query(value = "select * from coupon where code>4000 and code<4600", nativeQuery = true)
-	List<Coupon> checkCoupon(int couponCode);
+	Coupon findByCouponCode(String couponCode);
 
 	@Query(value = "select * from coupon where id=?1 ", nativeQuery = true)
 	String checkExpiry(int couponId);

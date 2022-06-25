@@ -4,33 +4,37 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coupon.dto.CouponDto;
+import com.coupon.entity.Coupon;
+import com.coupon.exception.CouponNotFoundException;
 import com.coupon.service.CouponService;
 
 @RestController
-@RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = {
-		MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+/*
+ * @RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE,
+ * MediaType.APPLICATION_XML_VALUE }, consumes = {
+ * MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+ */
 
 public class CouponController {
 
 	@Autowired
 	private CouponService couponService;
 
-	@GetMapping("/coupons/{couponId}")
-	public ResponseEntity<CouponDto> getCoupon(@PathVariable("couponId") int couponId) {
-		return new ResponseEntity<CouponDto>(couponService.getCoupon(couponId), HttpStatus.OK);
+	@GetMapping("/coupons/{couponCode}")
+	public ResponseEntity<CouponDto> getCoupon(@PathVariable("couponCode") String couponCode){
+		return new ResponseEntity<CouponDto>(couponService.findByCouponCode(couponCode), HttpStatus.OK);
 	}
 
 	@GetMapping("/coupons")
@@ -58,19 +62,7 @@ public class CouponController {
 		return new ResponseEntity<String>("Coupon successfully deleted", HttpStatus.ACCEPTED);
 	}
 
-	@GetMapping("/coupons/date/{couponExpiry}")
-	public ResponseEntity<List<CouponDto>> getDates(@PathVariable String couponExpiry) {
-		return new ResponseEntity<List<CouponDto>>(couponService.getDates(couponExpiry), HttpStatus.OK);
-	}
-
-	@GetMapping("/coupons/code/{couponCode}")
-	public ResponseEntity<String> checkCoupon(@PathVariable int couponCode) {
-		if (couponCode > 4000 && couponCode < 4500)
-			return new ResponseEntity<String>("You have won 10 % discount on clothing and shopping brands",
-					HttpStatus.OK);
-		return new ResponseEntity<String>("Sorry please Try again!!! Better luck next time", HttpStatus.OK);
-	}
-
+	/* Method to check the coupon for expiry by entering te coupon id */
 	@GetMapping("/coupons/expirydate/{couponId}")
 	public ResponseEntity<String> checkExpiry(@PathVariable("couponId") int couponId) {
 		return new ResponseEntity<String>(couponService.checkExpiry(couponId), HttpStatus.OK);
