@@ -2,7 +2,7 @@ server:
   port: 2222
 management:
   server:
-    port: 9000
+    port: 9009
   endpoints:
     web:
       exposure:
