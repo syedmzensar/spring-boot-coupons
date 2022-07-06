@@ -1,3 +1,16 @@
+security:
+  oauth2:
+    client:
+      client-id: 2e404ae9d4efcdb896ba
+      client-secret: 951f1b8ce435c84d8f69824cde82c8892f5a608d
+      access-token-uri: https://github.com/login/oauth/access_token
+      user-authorization-uri: https://github.com/login/oauth/authorize
+      client-authentication-scheme: form
+    resource:
+      user-info-uri: https://api.github.com/user
+      prefer-token-info: false
+
+
 server:
   port: 2222
 management:
